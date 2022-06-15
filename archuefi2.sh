@@ -59,7 +59,17 @@ pacman -S networkmanager network-manager-applet ppp --noconfirm
 # 'Подключаем автозагрузку менеджера входа и интернет'
 systemctl enable NetworkManager
 
+# 'git'
+pacman -S git 
+
+# 'TeamViewer'
+mkdir /home/$username/Programs
+cd /home/$username/Programs
+git clone https://aur.archlinux.org/teamviewer.git
+cd /home/$username/Programs/teamviewer
+makepkg -si --noconfirm
+cd
+rm -r /home/$username/Programs/teamviewer
+
 echo 'type "reboot"'
-# 'Если хотите подключить AUR, установить мои конфиги XFCE, тогда после перезагрзки и входа в систему, установите wget (sudo pacman -S wget) и выполните команду:'
-# 'wget git.io/archuefi3.sh && sh archuefi3.sh'
 exit
