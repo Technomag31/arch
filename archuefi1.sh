@@ -74,4 +74,4 @@ pacstrap -i /mnt base base-devel linux-zen linux-zen-headers linux-firmware dosf
 echo '3.3'
 genfstab -U /mnt >> /mnt/etc/fstab
 
-arch-chroot /mnt sh -c "$(curl -fsSL git.io/archuefi2.sh)"
+arch-chroot /mnt sh -c "$(curl -fsSL https://raw.githubusercontent.com/Technomag31/my1/main/archuefi2.sh)"
