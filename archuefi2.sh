@@ -60,4 +60,6 @@ pacman -S networkmanager network-manager-applet ppp --noconfirm
 echo '2.5.4.2'
 systemctl enable NetworkManager
 
+# 'wget https://raw.githubusercontent.com/Technomag31/my1/main/archuefi3.sh && sh archuefi3.sh'
+
 reboot
