@@ -9,10 +9,18 @@ echo 'wget & git'
 sudo pacman -Syu
 sudo pacman -S wget git --noconfirm
 
-
+echo 'swapfile'
+touch swapfile
+chattr +C swapfile
+fallocate --length 2048MiB swapfile
+sudo chown root swapfile
+sudo chmod 600 swapfile
+sudo mkswap	swapfile
+sudo swapon swapfile
+sudo '/home/technomag31/swapfile                                 none            swap    sw              0       0' >> /etc/fstab
 
 echo 'programs'
-sudo pacman -S telegram-desktop krita pulseaudio pavucontrol transmission-cli virtualbox --noconfirm
+sudo pacman -S telegram-desktop krita pulseaudio pavucontrol transmission-cli virtualbox teamviewer steam --noconfirm
 
 cd ~/AUR
 git clone https://aur.archlinux.org/google-chrome.git 
@@ -24,10 +32,10 @@ sudo rm -r google-chrome
 
 cd
 
-echo 'Xfce settings'
-wget https://github.com/Technomag31/my1/raw/main/attach/config.tar.gz
-sudo rm -rf ~/.config/xfce4/*
-sudo tar -xzf config.tar.gz -C ~/
+#echo 'Xfce settings'
+#wget https://github.com/Technomag31/my1/raw/main/attach/config.tar.gz
+#sudo rm -rf ~/.config/xfce4/*
+#sudo tar -xzf config.tar.gz -C ~/
 
 echo 'ArchLinux menu'
 wget https://github.com/Technomag31/my1/raw/main/attach/arch_logo.png
@@ -41,4 +49,4 @@ sudo pacman -Syu
 # clear
 rm -rf ~/downloads/
 
-echo 'end'
+reboot

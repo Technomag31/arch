@@ -62,4 +62,4 @@ systemctl enable NetworkManager
 
 # 'wget https://raw.githubusercontent.com/Technomag31/my1/main/archuefi3.sh && sh archuefi3.sh'
 
-reboot
+echo 'type reboot'
