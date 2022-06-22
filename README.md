@@ -3,10 +3,15 @@
 ##############################################
 
 start file 1
+ 
 curl -OL https://raw.githubusercontent.com/Technomag31/my1/main/archuefi1.sh && sh archuefi1.sh
 
 start file 
+ 
 wget https://raw.githubusercontent.com/Technomag31/my1/main/archuefi3.sh && sh archuefi3.sh
+
+
+
 
 Edited by Technomag31
 
