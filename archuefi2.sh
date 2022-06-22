@@ -1,75 +1,62 @@
 #!/bin/bash
 
-ln -sf /usr/share/zoneinfo/Europe/Kiev /etc/localtime
+
+echo '2.1.1'
+ln -sf /usr/share/zoneinfo/Europe/Berlin /etc/localtime
 hwclock --systohc
+echo technopc31 > /etc/hostname
+echo -e "\n\n127.0.0.1  localhost\n::1        localhost\n127.0.0.1  technopc31.localdomain  technopc31" >> /etc/hosts
 
-read -p "Pc name: " hostname
-read -p "user name: " username
-
-echo $hostname > /etc/hostname
-
-
-# 'Создадим загрузочный RAM диск'
+echo '2.1.2'
 mkinitcpio -p linux-zen
 
-# '3.5 Устанавливаем загрузчик'
-echo '3.5'
-pacman -Syy
-pacman -S grub efibootmgr --noconfirm 
+
+echo '2.1.3'
+(
+ echo rfhffcz2009;
+ echo rfhffcz2009;
+) | passwd
+
+
+echo '2.2.1'
+pacman -S grub efibootmgr dhcpcd dhclient networkmanager --noconfirm 
 grub-install /dev/sda
 
-# 'Обновляем grub.cfg'
+echo '2.2.2'
 grub-mkconfig -o /boot/grub/grub.cfg
 
-# 'Ставим программу для Wi-fi'
-pacman -S dialog wpa_supplicant --noconfirm 
 
-# 'Добавляем пользователя'
-useradd -m -g users -G wheel -s /bin/bash $username
+echo '2.3.1'
+useradd -m -G wheel -s /bin/bash technomag31
 
-# 'Создаем root пароль'
-passwd 
 
-# 'Устанавливаем пароль пользователя'
-passwd $username
+echo '2.3.2'
+(
+ echo 123;
+ echo 123;
+) | passwd technomag31
 
-# 'Устанавливаем SUDO'
+echo 'Устанавливаем SUDO'
 echo '%wheel ALL=(ALL) ALL' >> /etc/sudoers
 
-# 'Раскомментируем репозиторий multilib Для работы 32-битных приложений в 64-битной системе.'
+echo '2.4.1'
 echo '[multilib]' >> /etc/pacman.conf
 echo 'Include = /etc/pacman.d/mirrorlist' >> /etc/pacman.conf
 pacman -Syy
 
+echo '2.5.1'
 pacman -S xorg-server xorg-drivers xorg-xinit
 
-# "Ставим XFCE"
+echo "2.5.2"
 pacman -S xfce4 xfce4-goodies --noconfirm
 
-#'Cтавим DM'
+echo '2.5.3'
 pacman -S lxdm --noconfirm
 systemctl enable lxdm
 
-# 'Ставим шрифты'
-pacman -S ttf-liberation ttf-dejavu --noconfirm 
-
-# 'Ставим сеть'
+echo '2.5.4.1'
 pacman -S networkmanager network-manager-applet ppp --noconfirm
 
-# 'Подключаем автозагрузку менеджера входа и интернет'
+echo '2.5.4.2'
 systemctl enable NetworkManager
 
-# 'git'
-pacman -S git 
-
-# 'TeamViewer'
-mkdir /home/$username/Programs
-cd /home/$username/Programs
-git clone https://aur.archlinux.org/teamviewer.git
-cd /home/$username/Programs/teamviewer
-makepkg -si --noconfirm
-cd
-rm -r /home/$username/Programs/teamviewer
-
-echo 'type "reboot"'
-exit
