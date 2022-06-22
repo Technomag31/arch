@@ -45,7 +45,7 @@ echo 'Include = /etc/pacman.d/mirrorlist' >> /etc/pacman.conf
 pacman -Syy
 
 echo '2.5.1'
-pacman -S xorg-server xorg-drivers xorg-xinit
+pacman -S xorg-server xorg-drivers xorg-xinit --noconfirm
 
 echo "2.5.2"
 pacman -S xfce4 xfce4-goodies --noconfirm
@@ -60,3 +60,4 @@ pacman -S networkmanager network-manager-applet ppp --noconfirm
 echo '2.5.4.2'
 systemctl enable NetworkManager
 
+reboot
