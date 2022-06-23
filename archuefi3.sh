@@ -27,7 +27,7 @@ sudo pacman -S telegram-desktop krita pulseaudio pavucontrol transmission-cli vi
 cd ~/AUR
 git clone https://aur.archlinux.org/google-chrome.git 
 cd google-chrome 
-su - technomag31 -c 'makepkg -si --noconfirm'
+makepkg -si --noconfirm
 cd ~/AUR
 sudo rm -r cd ~/AUR/google-chrome
 
