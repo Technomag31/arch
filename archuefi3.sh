@@ -1,5 +1,14 @@
 #!/bin/bash
 
+echo 'xdg-user-dirs'
+sudo pacman -S xdg-user-dirs --noconfirm
+xdg-user-dirs-update
+mkdir ~/AUR
+
+echo 'wget & git'
+sudo pacman -Syu
+sudo pacman -S wget git --noconfirm
+
 
 echo 'swapfile'
 sudo touch swapfile
