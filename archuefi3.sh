@@ -15,13 +15,6 @@ echo 'programs'
 sudo pacman -S telegram-desktop krita pulseaudio pavucontrol transmission-cli virtualbox teamviewer steam --noconfirm
 
 
-cd ~/AUR
-git clone https://aur.archlinux.org/google-chrome.git 
-cd google-chrome 
-makepkg -si --noconfirm
-cd ~/AUR
-sudo rm -r cd ~/AUR/google-chrome
-
 
 
 cd
