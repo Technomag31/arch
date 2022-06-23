@@ -72,6 +72,14 @@ echo 'wget & git'
 sudo pacman -Syu
 sudo pacman -S wget git --noconfirm
 
+cd ~/AUR
+git clone https://aur.archlinux.org/google-chrome.git 
+cd google-chrome 
+su - technomag31 -c 'makepkg -si --noconfirm'
+cd ~/AUR
+sudo rm -r cd ~/AUR/google-chrome
+
+
 # 'wget https://raw.githubusercontent.com/Technomag31/my1/main/archuefi3.sh && sh archuefi3.sh'
 
 echo 'type reboot'
