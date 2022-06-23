@@ -60,6 +60,18 @@ pacman -S networkmanager network-manager-applet ppp --noconfirm
 echo '2.5.4.2'
 systemctl enable NetworkManager
 
+
+echo '3'
+
+echo 'xdg-user-dirs'
+sudo pacman -S xdg-user-dirs --noconfirm
+xdg-user-dirs-update
+mkdir ~/AUR
+
+echo 'wget & git'
+sudo pacman -Syu
+sudo pacman -S wget git --noconfirm
+
 # 'wget https://raw.githubusercontent.com/Technomag31/my1/main/archuefi3.sh && sh archuefi3.sh'
 
 echo 'type reboot'
