@@ -72,6 +72,11 @@ echo 'wget & git'
 sudo pacman -Syu
 sudo pacman -S wget git --noconfirm
 
-# 'wget https://raw.githubusercontent.com/Technomag31/my1/main/archuefi3.sh && sh archuefi3.sh'
+exit
 
-echo 'type reboot'
+echo '2.6'
+
+unmount -R /mnt 
+
+reboot
+# 'wget https://raw.githubusercontent.com/Technomag31/my1/main/archuefi3.sh && sh archuefi3.sh'
