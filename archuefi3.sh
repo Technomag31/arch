@@ -30,32 +30,6 @@ sudo makepkg -si --noconfirm
 cd ~/AUR
 sudo rm -r cd ~/AUR/google-chrome
 
-#NVIDIA
-sudo pacman -S bumblebee mesa xf86-video-intel lib32-virtualgl  --noconfirm
-
-
-cd ~/AUR
-git clone https://aur.archlinux.org/nvidia-390xx-utils.git
-cd nvidia-390xx-utils
-sudo makepkg -si --noconfirm
-cd ~/AUR
-sudo rm -r cd ~/AUR/nvidia-390xx-utils
-
-git clone https://aur.archlinux.org/lib32-nvidia-390xx-utils.git
-cd lib32-nvidia-390xx-utils
-sudo makepkg -si --noconfirm
-cd ~/AUR
-sudo rm -r cd ~/AUR/lib32-nvidia-390xx-utils
-
-git clone https://aur.archlinux.org/nvidia-390xx.git
-cd nvidia-390xx
-sudo makepkg -si --noconfirm
-cd ~/AUR
-sudo rm -r cd ~/AUR/nvidia-390xx
-
-
-gpasswd -a technomag31 bumblebee
-systemctl enable bumblebeed.service
 
 
 cd
