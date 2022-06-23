@@ -10,9 +10,9 @@ sudo pacman -Syu
 sudo pacman -S wget git --noconfirm
 
 echo 'swapfile'
-touch swapfile
-chattr +C swapfile
-fallocate --length 2048MiB swapfile
+sudo touch swapfile
+sudo chattr +C swapfile
+sudo fallocate --length 2048MiB swapfile
 sudo chown root swapfile
 sudo chmod 600 swapfile
 sudo mkswap	swapfile
@@ -26,7 +26,7 @@ sudo pacman -S telegram-desktop krita pulseaudio pavucontrol transmission-cli vi
 cd ~/AUR
 git clone https://aur.archlinux.org/google-chrome.git 
 cd google-chrome 
-sudo makepkg -si --noconfirm
+makepkg -si --noconfirm
 cd ~/AUR
 sudo rm -r cd ~/AUR/google-chrome
 
