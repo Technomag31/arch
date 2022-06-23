@@ -21,7 +21,7 @@ sudo swapon swapfile
 sudo '/home/technomag31/swapfile                                 none            swap    sw              0       0' >> /etc/fstab
 
 echo 'programs'
-sudo pacman -S telegram-desktop krita pulseaudio pavucontrol transmission-cli virtualbox teamviewer steam --noconfirm
+sudo pacman -S telegram-desktop krita pulseaudio pavucontrol transmission-cli virtualbox steam --noconfirm
 
 
 cd ~/AUR
@@ -31,6 +31,13 @@ makepkg -si --noconfirm
 cd ~/AUR
 sudo rm -r cd ~/AUR/google-chrome
 
+
+cd ~/AUR
+git clone https://aur.archlinux.org/teamviewer.git
+cd teamviewer
+makepkg -si --noconfirm
+cd ~/AUR
+sudo rm -r cd ~/AUR/teamviewer
 
 
 
