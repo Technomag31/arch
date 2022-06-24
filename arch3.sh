@@ -21,7 +21,12 @@ sudo swapon swapfile
 sudo '/home/technomag31/swapfile                                 none            swap    sw              0       0' >> /etc/fstab
 
 echo 'programs'
-sudo pacman -S telegram-desktop krita pulseaudio-alsa  transmission-cli virtualbox steam --noconfirm
+sudo pacman -S telegram-desktop krita transmission-cli virtualbox steam --noconfirm
+sudo systemctl enable transmission.service
+
+# audio and bluetooth
+sudo pacman pulseaudio pulseaudio-alsa pulseaudio-bluetooth bluez-utils --noconfirm
+sudo systemctl enable bluetooth.service
 
 
 cd ~/AUR
