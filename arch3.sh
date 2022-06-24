@@ -21,20 +21,22 @@ sudo swapon swapfile
 sudo '/home/technomag31/swapfile                                 none            swap    sw              0       0' >> /etc/fstab
 
 echo 'programs'
-sudo pacman -S telegram-desktop krita transmission-cli virtualbox steam --noconfirm
+sudo pacman -S telegram-desktop transmission-cli virtualbox steam --noconfirm
 sudo systemctl enable transmission.service
+
+# krita
 
 # audio and bluetooth
 sudo pacman pulseaudio pulseaudio-alsa pulseaudio-bluetooth bluez-utils --noconfirm
 sudo systemctl enable bluetooth.service
 
 
-cd ~/AUR
-git clone https://aur.archlinux.org/google-chrome.git 
-cd google-chrome 
-makepkg -si --noconfirm
-cd ~/AUR
-sudo rm -r cd ~/AUR/google-chrome
+#cd ~/AUR
+#git clone https://aur.archlinux.org/google-chrome.git 
+#cd google-chrome 
+#makepkg -si --noconfirm
+#cd ~/AUR
+#sudo rm -r cd ~/AUR/google-chrome
 
 
 cd ~/AUR
