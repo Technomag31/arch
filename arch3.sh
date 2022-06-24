@@ -21,7 +21,7 @@ sudo swapon swapfile
 sudo '/home/technomag31/swapfile                                 none            swap    sw              0       0' >> /etc/fstab
 
 echo 'programs'
-sudo pacman -S telegram-desktop krita pulseaudio pavucontrol transmission-cli virtualbox steam --noconfirm
+sudo pacman -S telegram-desktop krita pulseaudio-alsa  transmission-cli virtualbox steam --noconfirm
 
 
 cd ~/AUR
