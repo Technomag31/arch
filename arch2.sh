@@ -67,5 +67,5 @@ echo '2.6'
 
 unmount -R /mnt 
 
-reboot
-# 'wget https://raw.githubusercontent.com/Technomag31/my1/main/archuefi3.sh && sh archuefi3.sh'
+echo 'reboot'
+# 'wget https://raw.githubusercontent.com/Technomag31/my1/main/arch3.sh && sh arch3.sh'
