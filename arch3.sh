@@ -27,7 +27,7 @@ sudo systemctl enable transmission.service
 # krita
 
 # audio and bluetooth
-sudo pacman pulseaudio pulseaudio-alsa pulseaudio-bluetooth bluez-utils --noconfirm
+sudo pacman -S pulseaudio pulseaudio-alsa pulseaudio-bluetooth bluez-utils --noconfirm
 sudo systemctl enable bluetooth.service
 
 
