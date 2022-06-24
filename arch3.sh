@@ -31,12 +31,12 @@ sudo pacman pulseaudio pulseaudio-alsa pulseaudio-bluetooth bluez-utils --noconf
 sudo systemctl enable bluetooth.service
 
 
-#cd ~/AUR
-#git clone https://aur.archlinux.org/google-chrome.git 
-#cd google-chrome 
-#makepkg -si --noconfirm
-#cd ~/AUR
-#sudo rm -r cd ~/AUR/google-chrome
+cd ~/AUR
+git clone https://aur.archlinux.org/google-chrome.git 
+cd google-chrome 
+makepkg -si --noconfirm
+cd ~/AUR
+sudo rm -r cd ~/AUR/google-chrome
 
 
 cd ~/AUR
