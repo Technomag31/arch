@@ -10,16 +10,6 @@ sudo pacman -Syu
 sudo pacman -S wget git --noconfirm
 
 
-echo 'swapfile'
-sudo touch swapfile
-sudo chattr +C swapfile
-sudo fallocate --length 2048MiB swapfile
-sudo chown root swapfile
-sudo chmod 600 swapfile
-sudo mkswap	swapfile
-sudo swapon swapfile
-sudo '/home/technomag31/swapfile                                 none            swap    sw              0       0' >> /etc/fstab
-
 echo 'programs'
 sudo pacman -S telegram-desktop transmission-cli virtualbox wine winetricks steam --noconfirm
 sudo systemctl enable transmission.service
