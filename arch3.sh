@@ -21,7 +21,7 @@ sudo swapon swapfile
 sudo '/home/technomag31/swapfile                                 none            swap    sw              0       0' >> /etc/fstab
 
 echo 'programs'
-sudo pacman -S telegram-desktop transmission-cli virtualbox steam --noconfirm
+sudo pacman -S telegram-desktop transmission-cli virtualbox wine winetricks steam --noconfirm
 sudo systemctl enable transmission.service
 
 # krita
