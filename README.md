@@ -4,11 +4,11 @@
 
 start file 1
  
-curl -OL https://raw.githubusercontent.com/Technomag31/my1/main/archuefi1.sh && sh archuefi1.sh
+curl -OL https://raw.githubusercontent.com/Technomag31/my1/main/archuefi1.sh && sh arch1.sh
 
 start file 
  
-wget https://raw.githubusercontent.com/Technomag31/my1/main/archuefi3.sh && sh archuefi3.sh
+wget https://raw.githubusercontent.com/Technomag31/my1/main/archuefi3.sh && sh arch3.sh
 
 
 
