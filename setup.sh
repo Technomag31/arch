@@ -1,4 +1,4 @@
-#!/bin/bash
+# /bin/bash
 lsblk
 
 disks=$(lsblk -o PATH,TYPE | grep disk | awk '{print $1}')
@@ -23,28 +23,124 @@ sfdisk --delete $disk_to_insall
 
 lsblk $disk_to_insall
 
-
---------------------
-
-
-echo '1.1.1'
+echo 'Creating partitions'
 (
- echo g;
+  echo g # Create a new empty GPT partition table
 
- echo n;
- echo;
- echo;
- echo +300M;
- echo t;
- echo 1;
+  echo n # Add a new partition
+  echo 1 # Partition number
+  echo   # First sector (Accept default)
+  ec  ho +31M # Last sector (Accept default: whole space)
 
- echo n;
- echo;
- echo;
- echo;
+  echo n # Add a new partition
+  echo 2 # Partition number
+  echo   # First sector (Accept default)
+  echo +100M # Last sector
 
- echo w;
-) | fdisk /dev/sda
+  echo n # Add a new partition
+  echo 3 # Partition number
+  echo   # First sector (Accept default)
+  echo +250M # Last sector
+
+  echo n # Add a new partition
+  echo 4 # Partition number
+  echo   # First sector (Accept default)
+  echo   # Last sector (Accept default: whole space)
+  
+  echo t # Change partition type
+  echo 1 # Partition number
+  echo 4 # BIOS boot type
+
+  echo t # Change partition type
+  echo 2 # Partition number
+  echo 1 # EFI type
+
+  echo t # Change partition type
+  echo 3 # Partition number
+  echo 20 # Linux filesystem type
+  
+  echo t # Change partition type
+  echo 4 # Partition number
+  echo 20 # Linux filesystem type
+
+  echo w # Write changes
+) | fdisk $disk_to_insall
+
+lsblk $disk_to_insall
+
+partitions=( $(lsblk $disk_to_insall -o PATH -n | tail -n +2) )
+
+efi=${partitions[1]}
+boot=${partitions[2]}
+luks=${partitions[3]}
+
+echo "EFI partition:" $efi
+echo "Boot partition:" $boot
+echo "LUKS partition:" $luks
+
+cat /dev/zero > $efi
+cat /dev/zero > $boot
+
+echo "Formating partitions"
+mkfs.vfat -F 32 $efi
+mkfs.ext2 $boot
+
+device_alias='encrypted'
+lv_name='Arch'
+swap_name='swap'
+root_name='root'
+
+echo "Creating encrypted drive"
+cryptsetup -c aes-xts-plain64 -h sha512 -s 512 -q --use-random luksFormat $luks
+
+echo "Entering encrypted drive"
+cryptsetup luksOpen $luks $device_alias
+
+pvcreate /dev/mapper/$device_alias
+vgcreate $lv_name /dev/mapper/$device_alias
+
+memory_size_gb=$(free -g | grep Mem | awk '{print $2}')
+echo "Memory size: " $memory_size_gb
+
+echo "Creating encrypted partitions"
+lvcreate -L +$memory_size_gb"G" $lv_name -n $swap_name
+lvcreate -l +100%FREE $lv_name -n $root_name
+
+lsblk $disk_to_insall
+
+echo "Formating encrypted partitions"
+mkswap /dev/mapper/$lv_name-$swap_name
+mkfs.ext4 /dev/mapper/$lv_name-$root_name
+
+echo "Mounting partitions"
+mount /dev/mapper/$lv_name-$root_name /mnt
+swapon /dev/mapper/$lv_name-$swap_name
+mkdir /mnt/boot
+mount $boot /mnt/boot
+mkdir /mnt/boot/efi
+mount $efi /mnt/boot/efi
+
+echo "Installing Arch"
+pacstrap /mnt base base-devel grub efibootmgr linux linux-headers iwd vim \
+  lvm2 linux-firmware git zsh
+echo "Generating FSTAB"
+genfstab -U /mnt >> /mnt/etc/fstab
+
+arch-chroot /mnt /bin/bash -c "curl -L -o /home/setup.sh https://git.io/JtaY5 && chmod +x /home/setup.sh && /home/setup.sh"
+
+
+
+
+
+
+
+
+
+
+
+
+
+------------------
 
 
 echo '1.1.2'
