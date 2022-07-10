@@ -1,7 +1,31 @@
 #!/bin/bash
+lsblk
+
+disks=$(lsblk -o PATH,TYPE | grep disk | awk '{print $1}')
+
+echo 'Select disk to install the system'
+
+PS3="Disk number: "
+disk_to_insall=""
+select disk in $disks
+do
+  if [[ "${disks[@]}" =~ "$disk" ]]; then
+    disk_to_insall=$disk
+    echo 'System will be installed in '$disk_to_insall
+    break
+  else
+    echo 'Incorrect number'
+  fi
+done
+
+echo 'Erasing data on '$disk_to_insall
+sfdisk --delete $disk_to_insall
+
+lsblk $disk_to_insall
 
 
-echo '1.0'
+--------------------
+
 
 echo '1.1.1'
 (
