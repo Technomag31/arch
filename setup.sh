@@ -91,8 +91,9 @@ mkdir /mnt/boot/efi
 mount $efi /mnt/boot/efi
 
 echo "Installing Arch"
-pacstrap -i /mnt base base-devel linux-zen linux-zen-headers linux-firmware dosfstools btrfs-progs intel-ucode iucode-tool nano git iwd  --noconfirm
-#vim zsh 
+    pacstrap -i /mnt base base-devel linux-zen linux-zen-headers linux-firmware \
+    dosfstools btrfs-progs intel-ucode iucode-tool nano git iwd 
+    #vim zsh 
 
 
 echo "Generating FSTAB"
