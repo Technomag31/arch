@@ -84,7 +84,6 @@ root_name='root'
 memory_size_gb=$(free -g | grep Mem | awk '{print $2}')
 echo "Memory size: " $memory_size_gb
 
-
 echo "Mounting partitions"
 mkdir /mnt/boot
 mount $boot /mnt/boot
@@ -93,8 +92,7 @@ mount $efi /mnt/boot/efi
 
 echo "Installing Arch"
 pacstrap -i /mnt base base-devel linux-zen linux-zen-headers linux-firmware dosfstools btrfs-progs intel-ucode iucode-tool nano git  --noconfirm
-  
-  
+
 echo "Generating FSTAB"
 genfstab -U /mnt >> /mnt/etc/fstab
 
