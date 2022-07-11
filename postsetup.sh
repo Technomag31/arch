@@ -49,3 +49,6 @@ pacman -S --noconfirm \
     
 grub-mkconfig -o /boot/grub/grub.cfg
 
+git clone https://github.com/technomag31/dotfiles.git $home/.dotfiles
+
+
