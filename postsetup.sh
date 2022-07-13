@@ -45,13 +45,35 @@ pacman -S --noconfirm \
     xorg-server xorg-xinit xorg-xbacklight xorg-xrandr xorg-xinput \
     vlc krita telegram-desktop \
     alsa-utils pulseaudio pavucontrol pulseaudio-alsa pulseaudio-bluetooth bluez-utils \
-    intel-ucode intel-ucode git p7zip grub
+    intel-ucode intel-ucode git p7zip grub xorg-xmodmap
     
 grub-mkconfig -o /boot/grub/grub.cfg
 
 git clone https://github.com/technomag31/dotfiles.git $home/.dotfiles
 
-ln -s $home/.dotfiles/.Xresources $home/.Xmodmap
+ln -s $home/.dotfiles/.Xmodmap $home/.Xmodmap
 rm $home/.bashrc
 ln -s $home/.dotfiles/.bashrc $home/.bashrc
 ln -s $home/.dotfiles/.gitconfig  $home/.gitconfig 
+
+xmodmap $home/.Xmodmap
+
+
+mkdir /etc/iwd
+touch /etc/iwd/main.conf
+echo "[General]" >> /etc/iwd/main.conf
+echo "EnableNetworkConfiguration=true" >> /etc/iwd/main.conf
+
+pulseaudio -D
+echo "%wheel ALL=(ALL) ALL" >> /etc/sudoers
+
+git clone https://aur.archlinux.org/yay.git $home/yay
+chown -R technomag31 $home
+cd $home/yay
+sudo -u technomag31 makepkg -si
+cd
+rm -rf $home/yay
+sudo -u technomag31 yay -S  google-chrome
+chattr +i /etc/resolv.conf
+systemctl enable bluetooth.service
+
