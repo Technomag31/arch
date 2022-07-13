@@ -51,4 +51,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 git clone https://github.com/technomag31/dotfiles.git $home/.dotfiles
 
-
+ln -s $home/.dotfiles/.Xresources $home/.Xmodmap
+rm $home/.bashrc
+ln -s $home/.dotfiles/.bashrc $home/.bashrc
+ln -s $home/.dotfiles/.gitconfig  $home/.gitconfig 
