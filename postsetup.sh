@@ -43,7 +43,7 @@ home="/home/technomag31"
 
 pacman -S --noconfirm \
     xorg-server xorg-xinit xorg-xbacklight xorg-xrandr xorg-xinput \
-    vlc krita telegram-desktop \
+#    vlc krita telegram-desktop \
     alsa-utils pulseaudio pavucontrol pulseaudio-alsa pulseaudio-bluetooth bluez-utils \
     intel-ucode intel-ucode git p7zip grub xorg-xmodmap
     
