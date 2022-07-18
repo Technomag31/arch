@@ -77,3 +77,4 @@ sudo -u technomag31 yay -S  google-chrome
 chattr +i /etc/resolv.conf
 systemctl enable bluetooth.service
 
+pacman -Rscn xf86-video-intel
