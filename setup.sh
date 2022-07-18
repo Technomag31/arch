@@ -76,15 +76,8 @@ echo "Formating partitions"
 mkfs.vfat -F 32 $efi
 mkfs.ext2 $boot
 
-device_alias='encrypted'
-lv_name='Arch'
-swap_name='swap'
-root_name='root'
-
-memory_size_gb=$(free -g | grep Mem | awk '{print $2}')
-echo "Memory size: " $memory_size_gb
-
 echo "Mounting partitions"
+mount /dev/$disk_to_insall /mnt
 mkdir /mnt/boot
 mount $boot /mnt/boot
 mkdir /mnt/boot/efi
