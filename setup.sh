@@ -77,9 +77,13 @@ mkfs.vfat -F 32 $efi
 mkfs.ext2 $boot
 
 echo "Mounting partitions"
-mount /dev/$luks /mnt
+mount $luks /mnt
 mkdir -p /mnt/boot/efi
 mount $efi /mnt/boot/efi
+
+echo "EFI partition:" $efi
+echo "Boot partition:" $boot
+echo "LUKS partition:" $luks
 
 PS3="Disk number: "
 disk_to_insall=""
