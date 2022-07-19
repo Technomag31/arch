@@ -20,7 +20,7 @@ echo "User password"
 useradd -m -G wheel -s /bin/bash technomag31
 passwd technomag31
 
-hooks="HOOKS=(base udev autodetect modconf block keymap encrypt lvm2 resume filesystems keyboard fsck)"
+hooks="HOOKS=(base udev autodetect modconf block keymap encrypt resume filesystems keyboard fsck)"
 sed -i "s/HOOKS=.*/$hooks/" /etc/mkinitcpio.conf
 
 modules="MODULES=(i915 crc32c libcrc32 zlib_deflate btrfs)"
