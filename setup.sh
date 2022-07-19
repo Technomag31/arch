@@ -79,7 +79,9 @@ mkfs.btrfs $luks
 
 echo "Mounting partitions"
 mount $luks /mnt
-mkdir -p /mnt/boot/efi
+mkdir /mnt/boot
+mount $boot /mnt/boot
+mkdir /mnt/boot/efi
 mount $efi /mnt/boot/efi
 
 echo "EFI partition:" $efi
@@ -95,4 +97,4 @@ echo "Installing Arch"
 echo "Generating FSTAB"
 genfstab -U /mnt >> /mnt/etc/fstab
 
-arch-chroot /mnt sh -c "$(curl -fsSL https://raw.githubusercontent.com/Technomag31/arch/main/postsetup.sh)"
+arch-chroot /mnt /bin/bash -c "curl -L -o /home/setup.sh https://raw.githubusercontent.com/Technomag31/arch/main/postsetup.sh && chmod +x /home/setup.sh && /home/setup.sh"
