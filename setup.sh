@@ -81,6 +81,19 @@ mount /dev/$luks mnt
 mkdir -p /mnt/boot/efi
 mount $efi /mnt/boot/efi
 
+PS3="Disk number: "
+disk_to_insall=""
+select disk in $disks
+do
+  if [[ "${disks[@]}" =~ "$disk" ]]; then
+    disk_to_insall=$disk
+    echo 'System will be installed in '$disk_to_insall
+    break
+  else
+    echo 'Incorrect number'
+  fi
+done
+
 echo "Installing Arch"
     pacstrap -i /mnt base base-devel linux-zen linux-zen-headers linux-firmware \
     dosfstools btrfs-progs intel-ucode iucode-tool nano git iwd 
