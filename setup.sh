@@ -102,4 +102,4 @@ echo "Installing Arch"
 echo "Generating FSTAB"
 genfstab -U /mnt >> /mnt/etc/fstab
 
-arch-chroot /mnt sh -c "$(curl -fsSL https://raw.githubusercontent.com/Technomag31/my1/main/arch2.sh)"
+arch-chroot /mnt sh -c "$(curl -fsSL https://raw.githubusercontent.com/Technomag31/arch/main/postsetup.sh)"
