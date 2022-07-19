@@ -17,7 +17,7 @@ echo "Root password"
 passwd
 
 echo "User password"
-useradd -m -G wheel -s /bin/zsh technomag31
+useradd -m -G wheel -s /bin/bash technomag31
 passwd technomag31
 
 hooks="HOOKS=(base udev autodetect modconf block keymap encrypt lvm2 resume filesystems keyboard fsck)"
