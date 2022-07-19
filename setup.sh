@@ -83,15 +83,9 @@ mount $efi /mnt/boot/efi
 
 PS3="Disk number: "
 disk_to_insall=""
-select disk in $disks
+select disk in $luks
 do
-  if [[ "${disks[@]}" =~ "$disk" ]]; then
-    disk_to_insall=$disk
-    echo 'System will be installed in '$disk_to_insall
     break
-  else
-    echo 'Incorrect number'
-  fi
 done
 
 echo "Installing Arch"
