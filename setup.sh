@@ -78,9 +78,7 @@ mkfs.ext2 $boot
 
 echo "Mounting partitions"
 mount /dev/$disk_to_insall /mnt
-mkdir /mnt/boot
-mount $boot /mnt/boot
-mkdir /mnt/boot/efi
+mkdir -p /mnt/boot/efi
 mount $efi /mnt/boot/efi
 
 echo "Installing Arch"
