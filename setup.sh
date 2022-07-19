@@ -75,6 +75,7 @@ cat /dev/zero > $boot
 echo "Formating partitions"
 mkfs.vfat -F 32 $efi
 mkfs.ext2 $boot
+mkfs.btrfs $luks
 
 echo "Mounting partitions"
 mount $luks /mnt
