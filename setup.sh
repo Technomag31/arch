@@ -86,13 +86,6 @@ echo "EFI partition:" $efi
 echo "Boot partition:" $boot
 echo "LUKS partition:" $luks
 
-PS3="Disk number: "
-disk_to_insall=""
-select disk in $luks
-do
-    break
-done
-
 echo "Installing Arch"
     pacstrap -i /mnt base base-devel linux-zen linux-zen-headers linux-firmware \
     dosfstools btrfs-progs intel-ucode iucode-tool nano git iwd 
