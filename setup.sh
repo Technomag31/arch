@@ -77,7 +77,7 @@ mkfs.vfat -F 32 $efi
 mkfs.ext2 $boot
 
 echo "Mounting partitions"
-mount /dev/$disk_to_insall /mnt
+mount /dev/$luks mnt
 mkdir -p /mnt/boot/efi
 mount $efi /mnt/boot/efi
 
